@@ -11,10 +11,14 @@ export class UserService{
   constructor(private httpClient: HttpClient) {
   }
 
+  crearUsuario(usuario: UserModel): Observable<any> {
+    return this.httpClient.post(this.apiUserUrl, usuario);
+  }
   getAllUser(): Observable<UserModel[]>{
     return this.httpClient.get<UserModel[]>(this.apiUserUrl)
   }
-  deleteUser(): Observable<UserModel[]>{
-    return this.httpClient.delete<UserModel[]>(this.apiUserUrl)
+  deleteUser(userId: number): Observable<UserModel[]> {
+    const url = `${this.apiUserUrl}${userId}/`;
+    return this.httpClient.delete<UserModel[]>(url);
   }
 }
