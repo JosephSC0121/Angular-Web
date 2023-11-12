@@ -11,7 +11,7 @@ export class UserService{
   constructor(private httpClient: HttpClient) {
   }
 
-  crearUsuario(usuario: UserModel): Observable<any> {
+  createUser(usuario: UserModel): Observable<any> {
     return this.httpClient.post(this.apiUserUrl, usuario);
   }
   getAllUser(): Observable<UserModel[]>{
@@ -20,5 +20,13 @@ export class UserService{
   deleteUser(userId: number): Observable<UserModel[]> {
     const url = `${this.apiUserUrl}${userId}/`;
     return this.httpClient.delete<UserModel[]>(url);
+  }
+  getUserById(userId: number): Observable<UserModel> {
+    const url = `${this.apiUserUrl}${userId}/`;
+    return this.httpClient.get<UserModel>(url);
+  }
+  updateUser(userId: number, userData: any): Observable<any> {
+    const url = `${this.apiUserUrl}${userId}/`;
+    return this.httpClient.put(url, userData);
   }
 }
