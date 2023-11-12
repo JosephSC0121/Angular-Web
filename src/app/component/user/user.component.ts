@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from "../../domain/users/user.service";
 import { UserModel } from "../../domain/users/user.model";
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class UserComponent implements OnInit {
 
   listUsers$: Observable<UserModel[]>;
+
 
   constructor(private userService: UserService, private router: Router) {
     this.listUsers$ = this.userService.getAllUser();
