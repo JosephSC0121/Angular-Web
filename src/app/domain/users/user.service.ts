@@ -14,8 +14,11 @@ export class UserService{
   createUser(usuario: UserModel): Observable<any> {
     return this.httpClient.post(this.apiUserUrl, usuario);
   }
-  getAllUser(): Observable<UserModel[]>{
-    return this.httpClient.get<UserModel[]>(this.apiUserUrl)
+  getAllUser(searchTerm?: string): Observable<UserModel[]> {
+    // Si hay un término de búsqueda, construye la URL con el parámetro de consulta
+    const url = searchTerm ? `${this.apiUserUrl}?search=${searchTerm}` : this.apiUserUrl;
+
+    return this.httpClient.get<UserModel[]>(url);
   }
   deleteUser(userId: number): Observable<UserModel[]> {
     const url = `${this.apiUserUrl}${userId}/`;
