@@ -1,0 +1,39 @@
+<div class="card" *ngFor="let post of listPosts$ | async">
+  <ng-container *ngIf="shouldShowPost(post)">
+      <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text"><strong>Autor:</strong> {{ post.author }}</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="button" class="btn btn-primary" (click)="navigateToUpdatePost(post.id)">
+                  <i class="bi bi-pencil"></i> Editar
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deletePost(post.id)">
+                  <i class="bi bi-trash"></i> Eliminar
+              </button>
+          </div>
+      </div>
+  </ng-container>
+</div>
+<div class="mb-3">
+  <label for="searchTerm" class="form-label">Buscar:</label>
+  <div class="input-group">
+      <input type="text" id="searchTerm" [(ngModel)]="searchTerm" class="form-control" />
+      <button class="btn btn-outline-secondary" type="button" (click)="applySearch()">Buscar</button>
+  </div>
+</div>
+<button (click)="navigateToCreatePost()" type="button" class="btn btn-success mb-3">
+  <i class="bi bi-plus"></i> Crear Post
+</button>
+<table class="table table-bordered table-striped">
+  <!-- Table headers remain unchanged -->
+
+  <tbody>
+      <tr *ngFor="let post of listPosts$ | async">
+          <ng-container *ngIf="shouldShowPost(post)">
+              <!-- Table body remains unchanged -->
+          </ng-container>
+      </tr>
+  </tbody>
+</table>
+

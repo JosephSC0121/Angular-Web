@@ -8,6 +8,9 @@ import { ComponentsRoutes } from './component.routing';
 import { UserComponent } from './user/user.component';
 import { CreateuserComponent } from './user/createuser/createuser.component';
 import { UpdateUserComponent } from './user/updateuser/updateuser.component';
+import { PostComponent } from './post/post.component';
+import { CreatePostComponent } from './post/createpost/createpost.component';
+import { UpdatepostComponent } from './post/updatepost/updatepost.component';
 
 @NgModule({
   imports: [
@@ -20,7 +23,10 @@ import { UpdateUserComponent } from './user/updateuser/updateuser.component';
   declarations: [
     UserComponent,
     CreateuserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    PostComponent,
+    CreatePostComponent,
+    UpdatepostComponent
   ],
 })
 export class ComponentsModule { }

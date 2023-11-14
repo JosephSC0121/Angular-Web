@@ -1,0 +1,19 @@
+<form (ngSubmit)="submitForm()" class="container mt-5">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Titulo</label>
+      <input type="text" id="firstName" [(ngModel)]="nuevoPost.title" name="firstName" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="secondName" class="form-label">Contenido</label>
+      <input type="text" id="secondName" [(ngModel)]="nuevoPost.content" name="secondName" class="form-control" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="firstLastName" class="form-label">Autor</label>
+      <input type="text" id="firstLastName" [(ngModel)]="nuevoPost.author" name="firstLastName" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-auto d-block">Actualizar Post</button>
+    <br>
+  </form>    
+  
