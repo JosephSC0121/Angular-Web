@@ -2,69 +2,43 @@
   <div class="card-body">
     <h4 class="card-title">Users</h4>
     <div class="table-responsive">
-      <div>
-        <label for="searchTerm">Search:</label>
-        <input type="text" id="searchTerm" [(ngModel)]="searchTerm" />
-        <button (click)="applySearch()">Search</button>
+      <div class="mb-3">
+        <label for="searchTerm" class="form-label">Search:</label>
+        <div class="input-group">
+          <input type="text" id="searchTerm" [(ngModel)]="searchTerm" class="form-control" />
+          <button class="btn btn-outline-primary" type="button" (click)="applySearch()">Search</button>
+        </div>
       </div>
-      <table
-        class="table table-hover align-middle text-nowrap table-bordered table-striped"
-        matSort
-      >
-        <thead>
+      <table class="table table-hover align-middle text-nowrap table-bordered table-striped">
+        <thead class="table-dark">
           <tr>
-            <th mat-sort-header="firstName" class="text-dark font-medium fs-4">
-              #
-            </th>
-            <th class="text-dark font-medium fs-4">First Name</th>
-            <th class="text-dark font-medium fs-4">Second Name</th>
-            <th class="text-dark font-medium fs-4">Last Name</th>
-            <th class="text-dark font-medium fs-4">Second Last Name</th>
-            <th class="text-dark font-medium fs-4">Email</th>
-            <th class="text-dark font-medium fs-4">Username</th>
-            <th class="text-dark font-medium fs-4">Actions</th>
+            <th mat-sort-header="firstName" class="text-ligth font-medium fs-4">#</th>
+            <th class="text-ligth font-medium fs-4">First Name</th>
+            <th class="text-ligth font-medium fs-4">Second Name</th>
+            <th class="text-ligth font-medium fs-4">Last Name</th>
+            <th class="text-ligth font-medium fs-4">Second Last Name</th>
+            <th class="text-ligth font-medium fs-4">Email</th>
+            <th class="text-ligth font-medium fs-4">Username</th>
+            <th class="text-ligth font-medium fs-4">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of listUsers$ | async">
-            <!-- Utiliza *ngIf en la fila completa -->
             <ng-container *ngIf="shouldShowUser(user)">
+              <td>{{ user.id }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.secondName }}</td>
+              <td>{{ user.firstLastName }}</td>
+              <td>{{ user.secondLastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.username }}</td>
               <td>
-                {{ user.id }}
-              </td>
-              <td>
-                {{ user.firstName }}
-              </td>
-              <td>
-                {{ user.secondName }}
-              </td>
-              <td>
-                {{ user.firstLastName }}
-              </td>
-              <td>
-                {{ user.secondLastName }}
-              </td>
-              <td>
-                {{ user.email }}
-              </td>
-              <td>
-                {{ user.username }}
-              </td>
-              <td>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="navigateToUpdateUser(user.id)"
-                  >
-                    <i class="bi bi-pencil"></i>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" (click)="navigateToUpdateUser(user.id)">
+                    <i class="bi bi-pencil"></i> Edit
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    (click)="deleteUser(user.id)"
-                  >
-                    <i class="bi bi-trash"></i>
+                  <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">
+                    <i class="bi bi-trash"></i> Delete
                   </button>
                 </div>
               </td>
@@ -73,8 +47,8 @@
         </tbody>
       </table>
     </div>
-    <button (click)="navigateToCreateUser()" type="button">
-      Crear Usuario
+    <button (click)="navigateToCreateUser()" type="button" class="btn btn-success">
+      <i class="bi bi-plus"></i> Crear Usuario
     </button>
   </div>
 </div>
